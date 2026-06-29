@@ -97,41 +97,58 @@ function buildEmailHtml(firstName) {
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>You're Invited</title>
+<title>We're Getting Married!</title>
+<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Jost:wght@300;400&display=swap" rel="stylesheet"/>
 </head>
 <body style="margin:0;padding:0;background:#f4f1ec;font-family:Arial,sans-serif;">
 
   <table width="100%" cellpadding="0" cellspacing="0" style="background:#f4f1ec;padding:40px 20px;">
     <tr><td align="center">
 
-      <table width="100%" cellpadding="0" cellspacing="0" style="max-width:520px;background:#6c725b;border-radius:8px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.15);">
+      <table width="100%" cellpadding="0" cellspacing="0" style="max-width:520px;background:#ffffff;border-radius:4px;overflow:hidden;">
 
-        <!-- Photo (cropped to landscape) -->
+        <!-- Sage top rule -->
+        <tr>
+          <td style="background:#6c725b;height:5px;font-size:0;line-height:0;">&nbsp;</td>
+        </tr>
+
+        <!-- Photo -->
         <tr>
           <td style="padding:0;line-height:0;">
             <img src="https://sam9dc-del.github.io/wedding/couple2.jpeg" alt="Megan and Sam" width="520"
-                 style="width:100%;height:280px;object-fit:cover;object-position:center 30%;display:block;" />
+                 style="width:100%;height:260px;object-fit:cover;object-position:center 25%;display:block;" />
           </td>
         </tr>
 
         <!-- Main -->
         <tr>
-          <td style="padding:48px 48px 52px;text-align:center;">
+          <td style="padding:52px 48px 48px;text-align:center;">
 
-            <!-- Headline -->
-            <h1 style="margin:0 0 24px;font-family:Georgia,'Times New Roman',serif;font-size:34px;font-weight:400;color:#fff;line-height:1.2;">
+            <!-- Script headline -->
+            <p style="margin:0 0 24px;font-family:'Pinyon Script',Georgia,serif;font-size:64px;line-height:1;color:#1a1a1a;">
               We're getting married!
-            </h1>
+            </p>
+
+            <!-- Thin rule -->
+            <table cellpadding="0" cellspacing="0" style="margin:0 auto 28px;">
+              <tr><td style="width:48px;height:1px;background:#c8c4bc;font-size:0;">&nbsp;</td></tr>
+            </table>
+
+            <!-- Names in spaced caps -->
+            <p style="margin:0 0 16px;font-family:'Jost',Arial,sans-serif;font-weight:300;font-size:10px;letter-spacing:0.32em;text-transform:uppercase;color:#6c725b;">
+              Megan Spring &amp; Sam Cook
+            </p>
 
             <!-- Personal note -->
-            <p style="margin:0 0 36px;font-family:Arial,sans-serif;font-size:15px;line-height:1.75;color:rgba(255,255,255,0.78);">
+            <p style="margin:0 0 40px;font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:16px;line-height:1.75;color:#555;">
               Hello ${firstName},<br/><br/>
-              We've set a date for our wedding and we can't wait to share it with you!
+              We've set a date for our wedding and<br/>
+              we can't wait to share it with you!
             </p>
 
             <!-- CTA -->
             <a href="${CONFIG.WEBSITE_URL}"
-               style="display:inline-block;padding:15px 48px;background:#ffffff;color:#575e49;font-family:Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;text-decoration:none;border-radius:40px;">
+               style="display:inline-block;padding:14px 44px;background:#6c725b;color:#ffffff;font-family:'Jost',Arial,sans-serif;font-size:10px;font-weight:400;letter-spacing:0.28em;text-transform:uppercase;text-decoration:none;border-radius:40px;">
               Open Envelope
             </a>
 
@@ -140,9 +157,9 @@ function buildEmailHtml(firstName) {
 
         <!-- Footer -->
         <tr>
-          <td style="background:#575e49;padding:18px 40px;text-align:center;">
-            <p style="margin:0;font-family:Arial,sans-serif;font-size:10px;color:rgba(255,255,255,0.4);letter-spacing:0.12em;">
-              Megan &amp; Sam &nbsp;·&nbsp; 2027
+          <td style="padding:20px 40px;text-align:center;border-top:1px solid #ede9e3;">
+            <p style="margin:0;font-family:'Jost',Arial,sans-serif;font-size:9px;font-weight:300;letter-spacing:0.28em;text-transform:uppercase;color:#aaa;">
+              Megan &amp; Sam &nbsp;·&nbsp; 14 March 2027 &nbsp;·&nbsp; Taupo
             </p>
           </td>
         </tr>
