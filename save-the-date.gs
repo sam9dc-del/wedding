@@ -98,7 +98,8 @@ function buildEmailHtml(firstName) {
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>We're Getting Married!</title>
-<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Jost:wght@300;400&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400&display=swap" rel="stylesheet"/>
+<style>@font-face{font-family:'Mozart Script';src:url('https://sam9dc-del.github.io/wedding/MozartScript-Regular.ttf') format('truetype');}</style>
 </head>
 <body style="margin:0;padding:0;background:#f4f1ec;font-family:Arial,sans-serif;">
 
@@ -125,7 +126,7 @@ function buildEmailHtml(firstName) {
           <td style="padding:52px 48px 48px;text-align:center;">
 
             <!-- Script headline -->
-            <p style="margin:0 0 24px;font-family:'Pinyon Script',Georgia,serif;font-size:64px;line-height:1;color:#1a1a1a;">
+            <p style="margin:0 0 24px;font-family:'Mozart Script',Georgia,serif;font-size:64px;line-height:1;color:#1a1a1a;">
               We're getting married!
             </p>
 
