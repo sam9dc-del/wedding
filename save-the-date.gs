@@ -126,7 +126,11 @@ function buildEmailHtml(firstName) {
           <td style="padding:72px 48px 48px;text-align:center;">
 
             <!-- Script headline -->
-            <p style="margin:0 0 24px;font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:44px;line-height:1;color:#1a1a1a;">
+            <p style="margin:0 0 16px;font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:44px;line-height:1;color:#1a1a1a;">
+              We're getting married!
+            </p>
+
+            <p style="margin:0 0 32px;font-family:'Jost',Arial,sans-serif;font-weight:300;font-size:10px;letter-spacing:0.32em;text-transform:uppercase;color:#6c725b;">
               Megan &amp; Sam
             </p>
 
