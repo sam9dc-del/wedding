@@ -6,13 +6,16 @@
   <title>Save the Date — Megan &amp; Sam</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@1,300;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet" />
   <style>
+    @font-face {
+      font-family: 'Mozart Script';
+      src: url('https://sam9dc-del.github.io/wedding/MozartScript-Regular.ttf') format('truetype');
+    }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html, body {
-      height: 100%;
-    }
+    html, body { height: 100%; }
 
     body {
       background: #6c725b;
@@ -51,7 +54,6 @@
       50%       { transform: translateY(-10px); }
     }
 
-    /* Body */
     .env-body {
       position: relative;
       width: 100%;
@@ -79,7 +81,6 @@
       border-color: transparent #e3dace transparent transparent;
     }
 
-    /* Card (slides up, white with script teaser) */
     .env-card {
       position: absolute;
       inset: 5% 7% 5%;
@@ -95,19 +96,17 @@
       transition: transform 0.95s cubic-bezier(0.22, 1.15, 0.36, 1) 0.48s;
     }
 
-    .envelope.open .env-card {
-      transform: translateY(-112%);
-    }
+    .envelope.open .env-card { transform: translateY(-112%); }
 
     .env-card-script {
-      font-family: 'Pinyon Script', cursive;
+      font-family: 'Mozart Script', cursive;
       font-size: clamp(28px, 9vw, 44px);
       color: #1a1a1a;
       line-height: 0.9;
       text-align: center;
+      transform: rotate(-7deg);
     }
 
-    /* Flap */
     .env-flap {
       position: absolute;
       top: 0; left: 0; right: 0;
@@ -137,7 +136,6 @@
       backface-visibility: hidden;
     }
 
-    /* Wax seal */
     .env-seal {
       position: absolute;
       top: 48.5%;
@@ -169,7 +167,6 @@
       transform: translate(-50%, -50%) scale(0.65);
     }
 
-    /* Tap hint */
     .tap-hint {
       margin-top: 30px;
       font-family: 'Jost', sans-serif;
@@ -188,11 +185,13 @@
       50%       { opacity: 0.68; }
     }
 
-    /* ─── FULL-PAGE SAVE THE DATE ─── */
+    @keyframes float { 0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)} }
+
+    /* ─── CARD REVEAL ─── */
     .std-page {
       position: fixed;
       inset: 0;
-      background: #fff;
+      background: transparent;
       z-index: 50;
       opacity: 0;
       pointer-events: none;
@@ -201,6 +200,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: clamp(24px, 5vw, 60px) 20px;
     }
 
     .std-page.visible {
@@ -208,93 +208,102 @@
       pointer-events: all;
     }
 
-    .std-inner {
+    /* The white card sitting on the green */
+    .std-card {
+      background: #fff;
+      width: min(480px, 88vw);
+      border-radius: 2px;
+      box-shadow: 0 20px 80px rgba(0,0,0,0.35), 0 4px 16px rgba(0,0,0,0.15);
+      padding: clamp(36px, 8%, 64px) clamp(32px, 8%, 60px) clamp(40px, 8%, 64px);
       text-align: center;
-      padding: clamp(40px, 8vw, 80px) clamp(24px, 6vw, 60px);
-      width: 100%;
-      max-width: 680px;
+      overflow: hidden;
     }
 
-    /* Big script heading */
+    /* Angled script heading */
+    .std-script-wrap {
+      display: block;
+      text-align: left;
+      margin-bottom: clamp(24px, 5vw, 44px);
+      transform: rotate(-7deg);
+      transform-origin: left center;
+      padding-left: 2%;
+      overflow: visible;
+    }
+
     .std-script {
-      font-family: 'Pinyon Script', cursive;
-      font-size: clamp(90px, 22vw, 180px);
+      font-family: 'Mozart Script', cursive;
+      font-size: clamp(72px, 18vw, 150px);
       color: #1a1a1a;
       line-height: 0.82;
-      margin-bottom: clamp(36px, 6vw, 60px);
       display: block;
     }
 
-    /* "for" italic */
     .std-for {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
       font-weight: 300;
-      font-size: clamp(15px, 2.8vw, 22px);
+      font-size: clamp(14px, 2.8vw, 20px);
       color: #2a2a2a;
-      margin-bottom: 6px;
+      margin-bottom: 5px;
       letter-spacing: 0.05em;
     }
 
-    /* Spaced caps lines */
     .std-caps {
       font-family: 'Jost', sans-serif;
       font-weight: 300;
-      font-size: clamp(9px, 1.8vw, 13px);
+      font-size: clamp(8px, 1.6vw, 12px);
       letter-spacing: 0.38em;
       text-transform: uppercase;
       color: #2a2a2a;
     }
 
-    .std-gap-sm  { margin-bottom: clamp(10px, 2vw, 16px); }
-    .std-gap-md  { margin-bottom: clamp(28px, 5vw, 48px); }
-    .std-gap-lg  { margin-bottom: clamp(36px, 6vw, 60px); }
-
-    /* Names — larger */
     .std-names {
       font-family: 'Jost', sans-serif;
-      font-weight: 300;
-      font-size: clamp(13px, 3vw, 20px);
+      font-weight: 400;
+      font-size: clamp(11px, 2.4vw, 17px);
       letter-spacing: 0.42em;
       text-transform: uppercase;
       color: #1a1a1a;
     }
 
-    /* Date line: MARCH [script 14] 2027 */
     .std-date-row {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: clamp(6px, 1.5vw, 12px);
+      gap: clamp(4px, 1vw, 10px);
     }
 
     .std-date-word {
       font-family: 'Jost', sans-serif;
       font-weight: 300;
-      font-size: clamp(9px, 1.8vw, 13px);
+      font-size: clamp(8px, 1.6vw, 12px);
       letter-spacing: 0.38em;
       text-transform: uppercase;
       color: #2a2a2a;
     }
 
     .std-date-num {
-      font-family: 'Pinyon Script', cursive;
-      font-size: clamp(44px, 10vw, 76px);
+      font-family: 'Mozart Script', cursive;
+      font-size: clamp(40px, 9vw, 70px);
       color: #1a1a1a;
       line-height: 1;
       position: relative;
-      top: 4px; /* optical alignment with caps */
+      top: 3px;
     }
 
-    /* Formal italic */
     .std-formal {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
       font-weight: 300;
-      font-size: clamp(13px, 2.4vw, 19px);
+      font-size: clamp(12px, 2.2vw, 17px);
       letter-spacing: 0.08em;
       color: #555;
     }
+
+    .gap-xs  { margin-bottom: clamp(8px,  1.5vw, 12px); }
+    .gap-sm  { margin-bottom: clamp(14px, 3vw,   22px); }
+    .gap-md  { margin-bottom: clamp(24px, 5vw,   40px); }
+    .gap-lg  { margin-bottom: clamp(32px, 6vw,   52px); }
   </style>
 </head>
 <body>
@@ -302,42 +311,40 @@
   <!-- Envelope scene -->
   <div class="scene" id="scene">
     <div class="envelope" id="envelope" onclick="openEnvelope()">
-
       <div class="env-body">
         <div class="env-card">
           <span class="env-card-script">Save the<br/>Date</span>
         </div>
       </div>
-
       <div class="env-flap">
         <div class="flap-front"></div>
         <div class="flap-back"></div>
       </div>
-
       <div class="env-seal"><span>M&amp;S</span></div>
-
     </div>
     <p class="tap-hint" id="tap-hint">Tap to open</p>
   </div>
 
-  <!-- Full-page save the date (fades in after envelope opens) -->
+  <!-- Card reveal on sage green background -->
   <div class="std-page" id="std-page">
-    <div class="std-inner">
+    <div class="std-card">
 
-      <span class="std-script">Save the<br/>Date</span>
+      <!-- Angled Mozart Script heading -->
+      <div class="std-script-wrap gap-md">
+        <span class="std-script">Save the<br/>Date</span>
+      </div>
 
-      <p class="std-for std-gap-sm">for</p>
-      <p class="std-caps std-gap-md">The Wedding Of</p>
+      <p class="std-for gap-xs">for</p>
+      <p class="std-caps gap-sm">The Wedding Of</p>
+      <p class="std-names gap-lg">Megan Spring &amp; Sam Cook</p>
 
-      <p class="std-names std-gap-lg">Megan Spring &amp; Sam Cook</p>
-
-      <div class="std-date-row std-gap-sm">
+      <div class="std-date-row gap-xs">
         <span class="std-date-word">March</span>
         <span class="std-date-num">14</span>
         <span class="std-date-word">2027</span>
       </div>
 
-      <p class="std-caps std-gap-lg">Ohakuri &nbsp;Taupo</p>
+      <p class="std-caps gap-lg">Ohakuri &nbsp;Taupo</p>
 
       <p class="std-formal">formal invitation to follow</p>
 
@@ -350,11 +357,8 @@
       if (env.classList.contains('open')) return;
       env.classList.add('open');
       document.getElementById('tap-hint').classList.add('gone');
-
-      // Fade in the save the date after the card has slid up
       setTimeout(() => {
         document.getElementById('std-page').classList.add('visible');
-        // Fade out the envelope scene underneath
         setTimeout(() => {
           document.getElementById('scene').classList.add('fade-out');
         }, 400);
