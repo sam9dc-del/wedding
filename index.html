@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Megan & Sam — 14 March 2027</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --sage: #6c725b;
+      --sage-dark: #575e49;
+      --sage-light: #7d8469;
+      --white: #ffffff;
+      --cream: #f9f6f1;
+      --text-light: rgba(255,255,255,0.82);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--sage);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px 40px;
+      background: rgba(108,114,91,0.92);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+      transition: background 0.3s;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 40px;
+      align-items: center;
+    }
+
+    nav ul li a {
+      color: var(--white);
+      text-decoration: none;
+      font-family: 'Jost', sans-serif;
+      font-weight: 400;
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.85;
+      transition: opacity 0.2s;
+      position: relative;
+      padding-bottom: 3px;
+    }
+
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--white);
+      transition: width 0.25s ease;
+    }
+
+    nav ul li a:hover { opacity: 1; }
+    nav ul li a:hover::after { width: 100%; }
+
+    /* ── HERO ── */
+    #welcome {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding-top: 80px;
+      background: var(--sage);
+    }
+
+    .hero-names {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.5rem, 9vw, 7rem);
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 0.01em;
+      text-align: center;
+      padding: 40px 20px 10px;
+      line-height: 1;
+    }
+
+    .hero-date {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: clamp(0.8rem, 1.8vw, 1rem);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      text-align: center;
+      margin-bottom: 44px;
+    }
+
+    .hero-image-wrap {
+      width: min(860px, 90vw);
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+      border-radius: 6px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.35);
+    }
+
+    .hero-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
+    /* ── SHARED SECTION ── */
+    section {
+      padding: 100px 20px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: 'Jost', sans-serif;
+      font-weight: 400;
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 300;
+      line-height: 1.15;
+      margin-bottom: 32px;
+    }
+
+    .divider {
+      width: 60px;
+      height: 1px;
+      background: rgba(255,255,255,0.35);
+      margin: 0 auto 60px;
+    }
+
+    .section-text {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--text-light);
+      font-weight: 300;
+    }
+
+    /* ── COUNTDOWN ── */
+    .countdown {
+      display: flex;
+      gap: 40px;
+      justify-content: center;
+      margin: 60px 0 80px;
+      flex-wrap: wrap;
+    }
+
+    .countdown-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .countdown-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      font-weight: 300;
+      line-height: 1;
+      color: var(--white);
+    }
+
+    .countdown-label {
+      font-family: 'Jost', sans-serif;
+      font-weight: 400;
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--text-light);
+    }
+
+    .countdown-sep {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      color: rgba(255,255,255,0.2);
+      align-self: flex-start;
+      margin-top: 8px;
+    }
+
+    /* ── CARD ── */
+    .card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.13);
+      border-radius: 8px;
+      padding: 40px;
+      backdrop-filter: blur(4px);
+    }
+
+    /* ── SCHEDULE ── */
+    .schedule-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .schedule-item {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 24px;
+      align-items: start;
+      padding: 28px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .schedule-item:last-child { border-bottom: none; }
+
+    .schedule-time {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--white);
+      white-space: nowrap;
+      padding-top: 2px;
+    }
+
+    .schedule-event {
+      font-family: 'Jost', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .schedule-desc {
+      font-size: 0.88rem;
+      color: var(--text-light);
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    /* ── VENUE ── */
+    .venue-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .venue-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.13);
+      border-radius: 8px;
+      padding: 32px;
+    }
+
+    .venue-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      margin-bottom: 12px;
+    }
+
+    .venue-card p {
+      font-size: 0.88rem;
+      color: var(--text-light);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    .venue-card a {
+      display: inline-block;
+      margin-top: 14px;
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--white);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,0.4);
+      padding-bottom: 2px;
+      transition: border-color 0.2s;
+    }
+
+    .venue-card a:hover { border-color: var(--white); }
+
+    /* ── RSVP ── */
+    #rsvp {
+      text-align: center;
+    }
+
+    .rsvp-card {
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 8px;
+      font-weight: 400;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 6px;
+      color: var(--white);
+      font-family: 'Jost', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 300;
+      padding: 14px 16px;
+      outline: none;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+    }
+
+    .form-group select option { background: var(--sage-dark); color: var(--white); }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: rgba(255,255,255,0.5);
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: rgba(255,255,255,0.35); }
+
+    .btn {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 15px 52px;
+      background: var(--white);
+      color: var(--sage-dark);
+      font-family: 'Jost', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, transform 0.15s;
+    }
+
+    .btn:hover {
+      background: var(--cream);
+      transform: translateY(-1px);
+    }
+
+    .rsvp-note {
+      font-size: 0.82rem;
+      color: var(--text-light);
+      margin-top: 24px;
+      font-weight: 300;
+    }
+
+    /* ── FAQ ── */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .faq-item:first-child { border-top: 1px solid rgba(255,255,255,0.1); }
+
+    .faq-q {
+      width: 100%;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-family: 'Jost', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 400;
+      text-align: left;
+      padding: 24px 0;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      letter-spacing: 0.02em;
+    }
+
+    .faq-icon {
+      font-size: 1.4rem;
+      line-height: 1;
+      color: var(--text-light);
+      transition: transform 0.25s;
+      flex-shrink: 0;
+    }
+
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.25s ease;
+      font-size: 0.92rem;
+      color: var(--text-light);
+      line-height: 1.75;
+      font-weight: 300;
+    }
+
+    .faq-item.open .faq-a {
+      max-height: 300px;
+      padding-bottom: 24px;
+    }
+
+    /* ── WISHING WELL ── */
+    #wishing {
+      text-align: center;
+    }
+
+    .wishing-card {
+      max-width: 560px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.13);
+      border-radius: 8px;
+      padding: 52px 48px;
+    }
+
+    .wishing-card .big-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .wishing-card p {
+      font-size: 0.95rem;
+      color: var(--text-light);
+      line-height: 1.75;
+      font-weight: 300;
+      margin-bottom: 16px;
+    }
+
+    .bank-detail {
+      margin-top: 32px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 6px;
+      padding: 24px 28px;
+    }
+
+    .bank-detail p {
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      margin: 4px 0;
+      font-weight: 400;
+    }
+
+    .bank-detail .bank-label {
+      color: var(--text-light);
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+      font-weight: 400;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 60px 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .footer-names {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+
+    footer p {
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      font-weight: 300;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      nav ul { gap: 20px; }
+      nav ul li a { font-size: 0.72rem; letter-spacing: 0.08em; }
+      .venue-grid { grid-template-columns: 1fr; }
+      .card { padding: 28px 24px; }
+      .wishing-card { padding: 36px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <ul>
+      <li><a href="#welcome">Welcome</a></li>
+      <li><a href="#rsvp">RSVP</a></li>
+      <li><a href="#schedule">Schedule</a></li>
+      <li><a href="#stay">Where to Stay</a></li>
+      <li><a href="#faq">Q &amp; A</a></li>
+      <li><a href="#wishing">Wishing Well</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO / WELCOME -->
+  <div id="welcome" style="background:var(--sage);">
+    <h1 class="hero-names">Megan &amp; Sam</h1>
+    <p class="hero-date">14 March 2027 &nbsp;·&nbsp; Ohakuri Rise, Taupo</p>
+    <div class="hero-image-wrap">
+      <img src="couple.jpeg" alt="Megan and Sam" />
+    </div>
+
+    <!-- COUNTDOWN -->
+    <div style="padding: 80px 20px 0; text-align:center;">
+      <p class="section-label">Counting down to the big day</p>
+      <div class="countdown" id="countdown">
+        <div class="countdown-item"><span class="countdown-num" id="cd-days">—</span><span class="countdown-label">Days</span></div>
+        <div class="countdown-sep">·</div>
+        <div class="countdown-item"><span class="countdown-num" id="cd-hours">—</span><span class="countdown-label">Hours</span></div>
+        <div class="countdown-sep">·</div>
+        <div class="countdown-item"><span class="countdown-num" id="cd-mins">—</span><span class="countdown-label">Minutes</span></div>
+        <div class="countdown-sep">·</div>
+        <div class="countdown-item"><span class="countdown-num" id="cd-secs">—</span><span class="countdown-label">Seconds</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="width:60px;height:1px;background:rgba(255,255,255,0.2);margin:0 auto;"></div>
+
+  <!-- SCHEDULE -->
+  <section id="schedule">
+    <p class="section-label">The Day</p>
+    <h2 class="section-title">Schedule</h2>
+    <div class="divider"></div>
+    <div class="card schedule-list">
+      <div class="schedule-item">
+        <span class="schedule-time">3:00 pm</span>
+        <div>
+          <p class="schedule-event">Guest Arrival</p>
+          <p class="schedule-desc">Please arrive and find your seat. Drinks and canapés will be available as you settle in.</p>
+        </div>
+      </div>
+      <div class="schedule-item">
+        <span class="schedule-time">3:30 pm</span>
+        <div>
+          <p class="schedule-event">Ceremony</p>
+          <p class="schedule-desc">The ceremony will begin — please be seated by 3:20 pm.</p>
+        </div>
+      </div>
+      <div class="schedule-item">
+        <span class="schedule-time">4:00 pm</span>
+        <div>
+          <p class="schedule-event">Cocktail Hour</p>
+          <p class="schedule-desc">Celebrate with us over drinks and light bites while we take photos.</p>
+        </div>
+      </div>
+      <div class="schedule-item">
+        <span class="schedule-time">5:30 pm</span>
+        <div>
+          <p class="schedule-event">Dinner &amp; Speeches</p>
+          <p class="schedule-desc">Sit down dinner with toasts and speeches from our nearest and dearest.</p>
+        </div>
+      </div>
+      <div class="schedule-item">
+        <span class="schedule-time">8:00 pm</span>
+        <div>
+          <p class="schedule-event">Dancing</p>
+          <p class="schedule-desc">First dance, then the floor is yours — we'll party late into the evening.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHERE TO STAY -->
+  <section id="stay">
+    <p class="section-label">Accommodation</p>
+    <h2 class="section-title">Where to Stay</h2>
+    <div class="divider"></div>
+    <div class="venue-grid">
+      <div class="venue-card">
+        <h3>Huka Lodge</h3>
+        <p>World-renowned luxury retreat set on the banks of the Waikato River, just minutes from the venue. Book early — rooms fill quickly.</p>
+        <a href="https://www.hukalodge.com" target="_blank" rel="noopener">Visit website ↗</a>
+      </div>
+      <div class="venue-card">
+        <h3>Taupo Town Centre</h3>
+        <p>Taupo's town centre offers a wide range of hotels, motels and Airbnbs to suit every budget — all within a short drive of Ohakuri Rise.</p>
+        <a href="https://www.taupodestination.com" target="_blank" rel="noopener">Explore options ↗</a>
+      </div>
+      <div class="venue-card">
+        <h3>Camping &amp; Glamping</h3>
+        <p>The Taupo region has stunning lakeside holiday parks and glamping sites for those who want to make a full weekend of it.</p>
+        <a href="https://www.holidayparks.co.nz" target="_blank" rel="noopener">Find parks ↗</a>
+      </div>
+      <div class="venue-card">
+        <h3>Getting There</h3>
+        <p>Ohakuri Rise is located in the Waikato hill country near Atiamuri, about 35 minutes north of Taupo. Carpool or book a shuttle — we'll have more info soon.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- RSVP -->
+  <section id="rsvp" style="text-align:center;">
+    <p class="section-label">You're Invited</p>
+    <h2 class="section-title">RSVP</h2>
+    <div class="divider"></div>
+    <div class="rsvp-card card">
+      <form id="rsvp-form" onsubmit="handleRsvp(event)">
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" placeholder="Your full name" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="your@email.com" required />
+        </div>
+        <div class="form-group">
+          <label for="attending">Will you be attending?</label>
+          <select id="attending" name="attending" required>
+            <option value="" disabled selected>Please select</option>
+            <option value="yes">Joyfully accepts</option>
+            <option value="no">Regretfully declines</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="guests">Number of guests (including yourself)</label>
+          <select id="guests" name="guests">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="dietary">Dietary requirements</label>
+          <input type="text" id="dietary" name="dietary" placeholder="Any allergies or dietary needs?" />
+        </div>
+        <div class="form-group">
+          <label for="message">Message for the couple (optional)</label>
+          <textarea id="message" name="message" rows="3" placeholder="Leave us a note…"></textarea>
+        </div>
+        <button type="submit" class="btn">Send RSVP</button>
+      </form>
+      <p class="rsvp-note" id="rsvp-confirm" style="display:none;"></p>
+      <p class="rsvp-note" style="margin-top:16px;">Kindly respond by <strong style="color:var(--white)">1 February 2027</strong></p>
+    </div>
+  </section>
+
+  <!-- Q & A -->
+  <section id="faq">
+    <p class="section-label">Questions</p>
+    <h2 class="section-title">Q &amp; A</h2>
+    <div class="divider"></div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What should I wear? <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Smart casual to semi-formal. We'd love for guests to embrace earthy, natural tones to complement the stunning landscape — think sage, cream, rust and brown. Please avoid white, ivory or champagne out of respect for the bride.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Can I bring children? <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">We adore your little ones! Children are welcome at the ceremony and reception. Please indicate on your RSVP if you'll be bringing children so we can arrange seating accordingly.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Will there be parking at the venue? <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Yes, there is ample parking on-site at Ohakuri Rise. However, we encourage carpooling or using a designated driver, as it's an evening of celebration!</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Can I take photos during the ceremony? <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">We're having an unplugged ceremony and kindly ask guests to put away phones and cameras so everyone can be fully present. Our photographer will capture every moment, and we'll share the gallery with you after the wedding.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What if I have more questions? <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Drop us a message! You can reach Sam at sam9dc@gmail.com and we'll get back to you as soon as we can. We can't wait to celebrate with you.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WISHING WELL -->
+  <section id="wishing" style="text-align:center;">
+    <p class="section-label">Gifts</p>
+    <h2 class="section-title">Wishing Well</h2>
+    <div class="divider"></div>
+    <div class="wishing-card">
+      <p class="big-num">🥂</p>
+      <p>
+        We are so lucky to already have a beautiful home together, so if you'd like to give a gift, a contribution to our honeymoon or future adventures would mean the world to us.
+      </p>
+      <p>
+        Of course, your presence at our wedding is the greatest gift of all — please don't feel obligated.
+      </p>
+      <div class="bank-detail">
+        <p class="bank-label">Bank Transfer</p>
+        <p><strong>Megan &amp; Sam</strong></p>
+        <p style="color:var(--text-light);font-size:0.85rem;margin-top:4px;">Account details to be confirmed</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="footer-names">Megan &amp; Sam</p>
+    <p>14 · 03 · 2027 &nbsp;·&nbsp; Ohakuri Rise, Taupo</p>
+  </footer>
+
+  <script>
+    // Countdown
+    function updateCountdown() {
+      const wedding = new Date('2027-03-14T15:00:00+13:00');
+      const now = new Date();
+      const diff = wedding - now;
+      if (diff <= 0) {
+        document.getElementById('countdown').innerHTML = '<p style="font-family:\'Cormorant Garamond\',serif;font-size:2rem;font-style:italic">Today is the day! 🎉</p>';
+        return;
+      }
+      const days  = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const mins  = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const secs  = Math.floor((diff % (1000 * 60)) / 1000);
+      document.getElementById('cd-days').textContent  = String(days);
+      document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
+      document.getElementById('cd-mins').textContent  = String(mins).padStart(2, '0');
+      document.getElementById('cd-secs').textContent  = String(secs).padStart(2, '0');
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // FAQ accordion
+    function toggleFaq(btn) {
+      const item = btn.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
+
+    // RSVP form
+    function handleRsvp(e) {
+      e.preventDefault();
+      const form = document.getElementById('rsvp-form');
+      const confirm = document.getElementById('rsvp-confirm');
+      const name = document.getElementById('name').value.split(' ')[0];
+      form.style.display = 'none';
+      confirm.style.display = 'block';
+      confirm.innerHTML = `Thank you, <strong style="color:var(--white)">${name}</strong>! We've received your RSVP and can't wait to celebrate with you. 💚`;
+    }
+  </script>
+</body>
+</html>
