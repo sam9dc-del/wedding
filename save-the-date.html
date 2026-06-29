@@ -52,6 +52,17 @@
     }
 
     /* Black envelope body — defines the container height */
+    /* Back flap — triangle pointing up, sits behind card */
+    .env-flap {
+      position: absolute;
+      left: 0; right: 0;
+      height: 36%;
+      bottom: 100%;
+      background: #4a4a48;
+      clip-path: polygon(0 100%, 50% 0%, 100% 100%);
+      z-index: 0;
+    }
+
     .env-body {
       position: relative;
       width: 100%;
@@ -139,10 +150,13 @@
   <div class="scene" id="scene">
     <div class="envelope" id="envelope" onclick="openEnvelope()">
 
+      <!-- Back flap (triangle, behind everything) -->
+      <div class="env-flap"></div>
+
       <!-- Card behind the envelope body, already peeking out -->
       <div class="env-card"></div>
 
-      <!-- Black envelope body (sits on top, hides lower portion of card) -->
+      <!-- Charcoal envelope body (sits on top, hides lower portion of card) -->
       <div class="env-body"></div>
 
     </div>
