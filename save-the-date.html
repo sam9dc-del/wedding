@@ -210,13 +210,17 @@
 
     /* The white card sitting on the green */
     .std-card {
-      background: #fff;
       width: min(480px, 88vw);
       border-radius: 2px;
       box-shadow: 0 20px 80px rgba(0,0,0,0.35), 0 4px 16px rgba(0,0,0,0.15);
-      padding: clamp(36px, 8%, 64px) clamp(32px, 8%, 60px) clamp(40px, 8%, 64px);
-      text-align: center;
       overflow: hidden;
+      line-height: 0;
+    }
+
+    .std-card img {
+      width: 100%;
+      height: auto;
+      display: block;
     }
 
     /* Angled script heading */
@@ -327,26 +331,7 @@
   <!-- Card reveal on sage green background -->
   <div class="std-page" id="std-page">
     <div class="std-card">
-
-      <!-- Angled Mozart Script heading -->
-      <div class="std-script-wrap gap-md">
-        <span class="std-script">Save the<br/>Date</span>
-      </div>
-
-      <p class="std-for gap-xs">for</p>
-      <p class="std-caps gap-sm">The Wedding Of</p>
-      <p class="std-names gap-lg">Megan Spring &amp; Sam Cook</p>
-
-      <div class="std-date-row gap-xs">
-        <span class="std-date-word">March</span>
-        <span class="std-date-num">14</span>
-        <span class="std-date-word">2027</span>
-      </div>
-
-      <p class="std-caps gap-lg">Ohakuri &nbsp;Taupo</p>
-
-      <p class="std-formal">formal invitation to follow</p>
-
+      <img src="std-card.png" alt="Save the Date — Megan Spring &amp; Sam Cook, 14 March 2027" />
     </div>
   </div>
 
