@@ -6,7 +6,7 @@
   <title>Save the Date — Megan &amp; Sam</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@1,300;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -26,15 +26,17 @@
       user-select: none;
     }
 
-    /* ── SCENE ── */
+    /* ─── ENVELOPE SCENE ─── */
     .scene {
       perspective: 1400px;
       display: flex;
       flex-direction: column;
       align-items: center;
+      transition: opacity 0.6s ease;
     }
 
-    /* ── ENVELOPE ── */
+    .scene.fade-out { opacity: 0; pointer-events: none; }
+
     .envelope {
       position: relative;
       width: min(400px, 86vw);
@@ -42,31 +44,24 @@
       animation: float 4s ease-in-out infinite;
     }
 
-    .envelope.open {
-      animation: none;
-      cursor: default;
-    }
+    .envelope.open { animation: none; cursor: default; }
 
     @keyframes float {
       0%, 100% { transform: translateY(0px); }
       50%       { transform: translateY(-10px); }
     }
 
-    /* ── BODY ── */
+    /* Body */
     .env-body {
       position: relative;
       width: 100%;
       aspect-ratio: 1.62;
       background: #f2ebe0;
       border-radius: 3px 3px 8px 8px;
-      box-shadow:
-        0 4px 12px rgba(0,0,0,0.12),
-        0 24px 70px rgba(0,0,0,0.4);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12), 0 24px 70px rgba(0,0,0,0.4);
     }
 
-    /* Bottom-left and bottom-right inner fold creases */
-    .env-body::before,
-    .env-body::after {
+    .env-body::before, .env-body::after {
       content: '';
       position: absolute;
       bottom: 0;
@@ -84,21 +79,18 @@
       border-color: transparent #e3dace transparent transparent;
     }
 
-    /* ── CARD (inside envelope, slides up) ── */
+    /* Card (slides up, white with script teaser) */
     .env-card {
       position: absolute;
       inset: 5% 7% 5%;
-      background: #6c725b;
-      border-radius: 3px;
+      background: #fff;
+      border-radius: 2px;
       z-index: 3;
+      overflow: hidden;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      text-align: center;
-      padding: clamp(14px, 5%, 24px);
-      box-shadow: 0 -6px 24px rgba(0,0,0,0.18);
-      /* starts inside, clipped by z-layering from flap */
+      box-shadow: 0 -6px 24px rgba(0,0,0,0.12);
       transform: translateY(6px);
       transition: transform 0.95s cubic-bezier(0.22, 1.15, 0.36, 1) 0.48s;
     }
@@ -107,71 +99,15 @@
       transform: translateY(-112%);
     }
 
-    .card-label {
-      font-family: 'Jost', sans-serif;
-      font-size: clamp(8px, 2vw, 11px);
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.55);
-      margin-bottom: 10px;
+    .env-card-script {
+      font-family: 'Pinyon Script', cursive;
+      font-size: clamp(28px, 9vw, 44px);
+      color: #1a1a1a;
+      line-height: 0.9;
+      text-align: center;
     }
 
-    .card-names {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(26px, 8vw, 46px);
-      font-weight: 400;
-      color: #fff;
-      line-height: 1;
-      margin-bottom: 14px;
-    }
-
-    .card-rule {
-      width: 38px;
-      height: 1px;
-      background: rgba(255,255,255,0.28);
-      margin: 0 auto 14px;
-    }
-
-    .card-date {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(15px, 4.5vw, 24px);
-      font-weight: 300;
-      color: #fff;
-      letter-spacing: 0.06em;
-      margin-bottom: 5px;
-    }
-
-    .card-venue {
-      font-family: 'Jost', sans-serif;
-      font-size: clamp(7px, 1.8vw, 10px);
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.58);
-      margin-bottom: 20px;
-    }
-
-    .card-btn {
-      display: inline-block;
-      padding: 9px 22px;
-      background: rgba(255,255,255,0.11);
-      border: 1px solid rgba(255,255,255,0.28);
-      border-radius: 40px;
-      font-family: 'Jost', sans-serif;
-      font-size: clamp(7px, 1.8vw, 9px);
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.88);
-      text-decoration: none;
-      transition: background 0.2s, border-color 0.2s;
-      cursor: pointer;
-    }
-
-    .card-btn:hover {
-      background: rgba(255,255,255,0.2);
-      border-color: rgba(255,255,255,0.5);
-    }
-
-    /* ── FLAP ── */
+    /* Flap */
     .env-flap {
       position: absolute;
       top: 0; left: 0; right: 0;
@@ -182,9 +118,7 @@
       z-index: 10;
     }
 
-    .envelope.open .env-flap {
-      transform: rotateX(-180deg);
-    }
+    .envelope.open .env-flap { transform: rotateX(-180deg); }
 
     .flap-front {
       position: absolute;
@@ -192,19 +126,6 @@
       background: linear-gradient(170deg, #ede6d8 0%, #e4dccb 100%);
       clip-path: polygon(0 0, 100% 0, 50% 84%);
       backface-visibility: hidden;
-    }
-
-    /* subtle shadow line along the fold crease */
-    .flap-front::after {
-      content: '';
-      position: absolute;
-      /* sits at the fold point: 84% down the flap = bottom of triangle */
-      bottom: 16%;
-      left: 5%; right: 5%;
-      height: 1px;
-      background: rgba(0,0,0,0.06);
-      clip-path: polygon(0 0, 100% 0, 50% 1px);
-      transform: translateY(-1px);
     }
 
     .flap-back {
@@ -216,10 +137,9 @@
       backface-visibility: hidden;
     }
 
-    /* ── WAX SEAL ── */
+    /* Wax seal */
     .env-seal {
       position: absolute;
-      /* Place at fold point: flap height × clip point = 58% × 84% ≈ 48.7% from top */
       top: 48.5%;
       left: 50%;
       transform: translate(-50%, -50%);
@@ -231,10 +151,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow:
-        0 2px 10px rgba(0,0,0,0.25),
-        0 0 0 1.5px rgba(255,255,255,0.08);
-      transition: opacity 0.25s ease 0s, transform 0.25s ease 0s;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.25), 0 0 0 1.5px rgba(255,255,255,0.08);
+      transition: opacity 0.25s ease, transform 0.25s ease;
     }
 
     .env-seal span {
@@ -251,7 +169,7 @@
       transform: translate(-50%, -50%) scale(0.65);
     }
 
-    /* ── TAP HINT ── */
+    /* Tap hint */
     .tap-hint {
       margin-top: 30px;
       font-family: 'Jost', sans-serif;
@@ -269,44 +187,161 @@
       0%, 100% { opacity: 0.38; }
       50%       { opacity: 0.68; }
     }
+
+    /* ─── FULL-PAGE SAVE THE DATE ─── */
+    .std-page {
+      position: fixed;
+      inset: 0;
+      background: #fff;
+      z-index: 50;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.9s ease;
+      overflow-y: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .std-page.visible {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .std-inner {
+      text-align: center;
+      padding: clamp(40px, 8vw, 80px) clamp(24px, 6vw, 60px);
+      width: 100%;
+      max-width: 680px;
+    }
+
+    /* Big script heading */
+    .std-script {
+      font-family: 'Pinyon Script', cursive;
+      font-size: clamp(90px, 22vw, 180px);
+      color: #1a1a1a;
+      line-height: 0.82;
+      margin-bottom: clamp(36px, 6vw, 60px);
+      display: block;
+    }
+
+    /* "for" italic */
+    .std-for {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(15px, 2.8vw, 22px);
+      color: #2a2a2a;
+      margin-bottom: 6px;
+      letter-spacing: 0.05em;
+    }
+
+    /* Spaced caps lines */
+    .std-caps {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: clamp(9px, 1.8vw, 13px);
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: #2a2a2a;
+    }
+
+    .std-gap-sm  { margin-bottom: clamp(10px, 2vw, 16px); }
+    .std-gap-md  { margin-bottom: clamp(28px, 5vw, 48px); }
+    .std-gap-lg  { margin-bottom: clamp(36px, 6vw, 60px); }
+
+    /* Names — larger */
+    .std-names {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: clamp(13px, 3vw, 20px);
+      letter-spacing: 0.42em;
+      text-transform: uppercase;
+      color: #1a1a1a;
+    }
+
+    /* Date line: MARCH [script 14] 2027 */
+    .std-date-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(6px, 1.5vw, 12px);
+    }
+
+    .std-date-word {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: clamp(9px, 1.8vw, 13px);
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: #2a2a2a;
+    }
+
+    .std-date-num {
+      font-family: 'Pinyon Script', cursive;
+      font-size: clamp(44px, 10vw, 76px);
+      color: #1a1a1a;
+      line-height: 1;
+      position: relative;
+      top: 4px; /* optical alignment with caps */
+    }
+
+    /* Formal italic */
+    .std-formal {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(13px, 2.4vw, 19px);
+      letter-spacing: 0.08em;
+      color: #555;
+    }
   </style>
 </head>
 <body>
 
-  <div class="scene">
-
+  <!-- Envelope scene -->
+  <div class="scene" id="scene">
     <div class="envelope" id="envelope" onclick="openEnvelope()">
 
-      <!-- Envelope body with inner fold decorations -->
       <div class="env-body">
-
-        <!-- Save the date card -->
         <div class="env-card">
-          <p class="card-label">Save the Date</p>
-          <h1 class="card-names">Megan &amp; Sam</h1>
-          <div class="card-rule"></div>
-          <p class="card-date">14 March 2027</p>
-          <p class="card-venue">Ohakuri Rise &nbsp;·&nbsp; Taupo</p>
-          <a href="https://sam9dc-del.github.io/wedding/"
-             class="card-btn"
-             onclick="event.stopPropagation()">View our website</a>
+          <span class="env-card-script">Save the<br/>Date</span>
         </div>
-
       </div>
 
-      <!-- Flap (rotates back on open) -->
       <div class="env-flap">
         <div class="flap-front"></div>
         <div class="flap-back"></div>
       </div>
 
-      <!-- Wax seal -->
       <div class="env-seal"><span>M&amp;S</span></div>
 
     </div>
-
     <p class="tap-hint" id="tap-hint">Tap to open</p>
+  </div>
 
+  <!-- Full-page save the date (fades in after envelope opens) -->
+  <div class="std-page" id="std-page">
+    <div class="std-inner">
+
+      <span class="std-script">Save the<br/>Date</span>
+
+      <p class="std-for std-gap-sm">for</p>
+      <p class="std-caps std-gap-md">The Wedding Of</p>
+
+      <p class="std-names std-gap-lg">Megan Spring &amp; Sam Cook</p>
+
+      <div class="std-date-row std-gap-sm">
+        <span class="std-date-word">March</span>
+        <span class="std-date-num">14</span>
+        <span class="std-date-word">2027</span>
+      </div>
+
+      <p class="std-caps std-gap-lg">Ohakuri &nbsp;Taupo</p>
+
+      <p class="std-formal">formal invitation to follow</p>
+
+    </div>
   </div>
 
   <script>
@@ -315,6 +350,15 @@
       if (env.classList.contains('open')) return;
       env.classList.add('open');
       document.getElementById('tap-hint').classList.add('gone');
+
+      // Fade in the save the date after the card has slid up
+      setTimeout(() => {
+        document.getElementById('std-page').classList.add('visible');
+        // Fade out the envelope scene underneath
+        setTimeout(() => {
+          document.getElementById('scene').classList.add('fade-out');
+        }, 400);
+      }, 1400);
     }
   </script>
 
