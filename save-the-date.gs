@@ -130,11 +130,6 @@ function buildEmailHtml(firstName) {
               We're getting married!
             </p>
 
-            <!-- Thin rule -->
-            <table cellpadding="0" cellspacing="0" style="margin:0 auto 28px;">
-              <tr><td style="width:48px;height:1px;background:#c8c4bc;font-size:0;">&nbsp;</td></tr>
-            </table>
-
             <!-- Names in spaced caps -->
             <p style="margin:0 0 16px;font-family:'Jost',Arial,sans-serif;font-weight:300;font-size:10px;letter-spacing:0.32em;text-transform:uppercase;color:#6c725b;">
               Megan Spring &amp; Sam Cook
