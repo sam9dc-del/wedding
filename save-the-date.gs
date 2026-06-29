@@ -149,7 +149,7 @@ function buildEmailHtml(firstName) {
             <!-- CTA -->
             <a href="${CONFIG.WEBSITE_URL}"
                style="display:inline-block;padding:14px 44px;background:#6c725b;color:#ffffff;font-family:'Jost',Arial,sans-serif;font-size:10px;font-weight:400;letter-spacing:0.28em;text-transform:uppercase;text-decoration:none;border-radius:40px;">
-              Open Envelope
+              View Save The Date
             </a>
 
           </td>
