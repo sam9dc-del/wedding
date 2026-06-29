@@ -20,7 +20,7 @@ const CONFIG = {
   SHEET_NAME:    "Guests",          // Name of the tab in your Google Sheet
   FROM_NAME:     "Megan & Sam",     // Display name emails are sent from
   SUBJECT:       "Save the Date 💚 Megan & Sam — 14 March 2027",
-  WEBSITE_URL:   "https://your-wedding-site.com",  // Update once your site is live
+  WEBSITE_URL:   "https://sam9dc-del.github.io/wedding/",
   DELAY_MS:      300,               // Milliseconds between sends (avoids Gmail rate limits)
 };
 
