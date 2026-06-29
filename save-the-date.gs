@@ -22,7 +22,7 @@ function myFunction() { sendTestEmail(); }
 const CONFIG = {
   SHEET_NAME:    "Guests",          // Name of the tab in your Google Sheet
   FROM_NAME:     "Megan & Sam",     // Display name emails are sent from
-  SUBJECT:       "Save the Date — Megan & Sam — 14 March 2027",
+  SUBJECT:       "Save The Date - Megan & Sam",
   WEBSITE_URL:   "https://sam9dc-del.github.io/wedding/save-the-date.html",
   DELAY_MS:      300,               // Milliseconds between sends (avoids Gmail rate limits)
 };
