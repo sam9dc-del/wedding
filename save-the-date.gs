@@ -116,7 +116,7 @@ function buildEmailHtml(firstName) {
         <tr>
           <td style="padding:0;line-height:0;">
             <img src="https://sam9dc-del.github.io/wedding/couple2.jpeg" alt="Megan and Sam" width="520"
-                 style="width:100%;height:260px;object-fit:cover;object-position:center 25%;display:block;" />
+                 style="width:100%;height:340px;object-fit:cover;object-position:center 55%;display:block;" />
           </td>
         </tr>
 
