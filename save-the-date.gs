@@ -130,11 +130,6 @@ function buildEmailHtml(firstName) {
               Megan &amp; Sam
             </p>
 
-            <!-- Names in spaced caps -->
-            <p style="margin:0 0 16px;font-family:'Jost',Arial,sans-serif;font-weight:300;font-size:10px;letter-spacing:0.32em;text-transform:uppercase;color:#6c725b;">
-              Megan Spring &amp; Sam Cook
-            </p>
-
             <!-- Personal note -->
             <p style="margin:0 0 40px;font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:16px;line-height:1.75;color:#555;">
               Hello ${firstName},<br/><br/>
