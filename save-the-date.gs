@@ -75,6 +75,28 @@ function sendSaveDates() {
   SpreadsheetApp.getUi().alert(msg);
 }
 
+// Send to a small test batch
+function sendTestBatch() {
+  const batch = [
+    { name: "David",  email: "davidcook038@gmail.com" },
+    { name: "Ingrid", email: "23griddles@gmail.com" },
+    { name: "Sam",    email: "sam9dc@gmail.com" },
+    { name: "Megan",  email: "megsandsam27@gmail.com" },
+    { name: "Megan",  email: "megspring@outlook.com" },
+  ];
+  for (const guest of batch) {
+    GmailApp.sendEmail(
+      guest.email,
+      CONFIG.SUBJECT,
+      stripHtml(buildEmailHtml(guest.name)),
+      { name: CONFIG.FROM_NAME, htmlBody: buildEmailHtml(guest.name) }
+    );
+    Logger.log(`Sent to ${guest.email}`);
+    Utilities.sleep(CONFIG.DELAY_MS);
+  }
+  Logger.log("Test batch done!");
+}
+
 // Send a single test email to yourself before blasting the full list
 function sendTestEmail() {
   const me = Session.getActiveUser().getEmail();
