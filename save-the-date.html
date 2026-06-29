@@ -55,43 +55,29 @@
     .env-body {
       position: relative;
       width: 100%;
-      aspect-ratio: 1.6;
-      background: #111;
-      border-radius: 4px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.55), 0 4px 12px rgba(0,0,0,0.3);
+      aspect-ratio: 1.55;
+      background: #3d3d3b;
+      border-radius: 6px;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.5), 0 4px 12px rgba(0,0,0,0.25);
       z-index: 2;
     }
 
-    /* White card already poking out of the top */
+    /* White card — just the top edge peeking out */
     .env-card {
       position: absolute;
-      left: 10%; right: 10%;
+      left: 4%; right: 4%;
       bottom: 4%;
-      height: 145%;
+      height: 130%;
       background: #fff;
       border-radius: 2px;
       z-index: 1;
-      overflow: hidden;
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-      padding-top: 6%;
-      box-shadow: 0 -4px 24px rgba(0,0,0,0.2);
-      transform: translateY(-24%);
+      box-shadow: 0 -2px 12px rgba(0,0,0,0.15);
+      transform: translateY(-10%);
       transition: transform 1s cubic-bezier(0.22, 1.1, 0.36, 1);
     }
 
     .envelope.open .env-card {
-      transform: translateY(-108%);
-    }
-
-    .env-card-script {
-      font-family: 'Mozart Script', cursive;
-      font-size: clamp(22px, 7vw, 36px);
-      color: #1a1a1a;
-      line-height: 0.9;
-      text-align: center;
-      transform: rotate(-5deg);
+      transform: translateY(-106%);
     }
 
     /* Tap hint */
@@ -154,9 +140,7 @@
     <div class="envelope" id="envelope" onclick="openEnvelope()">
 
       <!-- Card behind the envelope body, already peeking out -->
-      <div class="env-card">
-        <span class="env-card-script">Save the<br/>Date</span>
-      </div>
+      <div class="env-card"></div>
 
       <!-- Black envelope body (sits on top, hides lower portion of card) -->
       <div class="env-body"></div>
