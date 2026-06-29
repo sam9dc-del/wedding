@@ -20,7 +20,7 @@ const CONFIG = {
   SHEET_NAME:    "Guests",          // Name of the tab in your Google Sheet
   FROM_NAME:     "Megan & Sam",     // Display name emails are sent from
   SUBJECT:       "Save the Date 💚 Megan & Sam — 14 March 2027",
-  WEBSITE_URL:   "https://sam9dc-del.github.io/wedding/",
+  WEBSITE_URL:   "https://sam9dc-del.github.io/wedding/save-the-date.html",
   DELAY_MS:      300,               // Milliseconds between sends (avoids Gmail rate limits)
 };
 
@@ -97,62 +97,48 @@ function buildEmailHtml(firstName) {
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Save the Date — Megan & Sam</title>
+<title>You're Invited</title>
 </head>
-<body style="margin:0;padding:0;background:#f4f1ec;font-family:Georgia,'Times New Roman',serif;">
+<body style="margin:0;padding:0;background:#f4f1ec;font-family:Arial,sans-serif;">
 
   <table width="100%" cellpadding="0" cellspacing="0" style="background:#f4f1ec;padding:40px 20px;">
     <tr><td align="center">
 
-      <!-- Card -->
-      <table width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#6c725b;border-radius:8px;overflow:hidden;">
+      <table width="100%" cellpadding="0" cellspacing="0" style="max-width:520px;background:#6c725b;border-radius:8px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.15);">
 
         <!-- Top band -->
         <tr>
-          <td style="background:#575e49;padding:12px 40px;text-align:center;">
-            <p style="margin:0;font-family:Arial,sans-serif;font-size:11px;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.65);">Save the Date</p>
+          <td style="background:#575e49;padding:11px 40px;text-align:center;">
+            <p style="margin:0;font-family:Arial,sans-serif;font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:rgba(255,255,255,0.55);">You're invited</p>
           </td>
         </tr>
 
-        <!-- Main content -->
+        <!-- Main -->
         <tr>
-          <td style="padding:52px 48px 44px;text-align:center;">
+          <td style="padding:60px 48px 52px;text-align:center;">
 
-            <!-- Names -->
-            <h1 style="margin:0 0 6px;font-family:Georgia,'Times New Roman',serif;font-size:52px;font-weight:400;color:#ffffff;line-height:1;letter-spacing:0.01em;">
-              Megan &amp; Sam
-            </h1>
-
-            <!-- Divider -->
-            <table cellpadding="0" cellspacing="0" style="margin:24px auto;">
+            <!-- Monogram circle -->
+            <table cellpadding="0" cellspacing="0" style="margin:0 auto 36px;">
               <tr>
-                <td style="width:40px;height:1px;background:rgba(255,255,255,0.3);"></td>
-                <td style="padding:0 12px;color:rgba(255,255,255,0.45);font-size:16px;">◆</td>
-                <td style="width:40px;height:1px;background:rgba(255,255,255,0.3);"></td>
+                <td style="width:64px;height:64px;background:rgba(255,255,255,0.1);border-radius:50%;border:1px solid rgba(255,255,255,0.2);text-align:center;vertical-align:middle;">
+                  <span style="font-family:Georgia,'Times New Roman',serif;font-size:20px;color:rgba(255,255,255,0.88);letter-spacing:0.04em;">M&amp;S</span>
+                </td>
               </tr>
             </table>
 
-            <!-- Date -->
-            <p style="margin:0 0 6px;font-family:Georgia,'Times New Roman',serif;font-size:28px;font-weight:400;color:#ffffff;letter-spacing:0.04em;">
-              14 March 2027
+            <!-- Teaser -->
+            <p style="margin:0 0 10px;font-family:Georgia,'Times New Roman',serif;font-size:30px;font-weight:400;color:#fff;line-height:1.25;">
+              We have something<br/>for you&hellip;
             </p>
 
-            <!-- Venue -->
-            <p style="margin:0 0 32px;font-family:Arial,sans-serif;font-size:13px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.72);">
-              Ohakuri Rise &nbsp;·&nbsp; Taupo, New Zealand
+            <p style="margin:0 0 40px;font-family:Arial,sans-serif;font-size:14px;line-height:1.7;color:rgba(255,255,255,0.62);">
+              Open your save the date below.
             </p>
 
-            <!-- Personalised note -->
-            <p style="margin:0 0 36px;font-family:Arial,sans-serif;font-size:15px;line-height:1.7;color:rgba(255,255,255,0.85);">
-              Dear ${firstName},<br/>
-              We're getting married and we'd love you to be there.<br/>
-              Formal invitations to follow — for now, please mark your calendar!
-            </p>
-
-            <!-- CTA button -->
+            <!-- CTA -->
             <a href="${CONFIG.WEBSITE_URL}"
-               style="display:inline-block;padding:14px 44px;background:#ffffff;color:#575e49;font-family:Arial,sans-serif;font-size:12px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;text-decoration:none;border-radius:40px;">
-              View Our Website
+               style="display:inline-block;padding:15px 48px;background:#ffffff;color:#575e49;font-family:Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;text-decoration:none;border-radius:40px;">
+              Open Envelope
             </a>
 
           </td>
@@ -160,15 +146,14 @@ function buildEmailHtml(firstName) {
 
         <!-- Footer -->
         <tr>
-          <td style="background:#575e49;padding:20px 40px;text-align:center;">
-            <p style="margin:0;font-family:Arial,sans-serif;font-size:11px;color:rgba(255,255,255,0.5);letter-spacing:0.1em;">
-              Megan &amp; Sam &nbsp;·&nbsp; 14 · 03 · 2027 &nbsp;·&nbsp; Taupo, New Zealand
+          <td style="background:#575e49;padding:18px 40px;text-align:center;">
+            <p style="margin:0;font-family:Arial,sans-serif;font-size:10px;color:rgba(255,255,255,0.4);letter-spacing:0.12em;">
+              Megan &amp; Sam &nbsp;·&nbsp; 2027
             </p>
           </td>
         </tr>
 
       </table>
-      <!-- /Card -->
 
     </td></tr>
   </table>
